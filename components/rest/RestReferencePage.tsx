@@ -1,17 +1,13 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 
 import { DefaultLayout } from 'components/DefaultLayout'
-import { ArticleTitle } from 'components/article/ArticleTitle'
-import { useMainContext } from 'components/context/MainContext'
 import { MarkdownContent } from 'components/ui/MarkdownContent'
 import { Lead } from 'components/ui/Lead'
-import { ArticleGridLayout } from 'components/article/ArticleGridLayout'
-import { MiniTocItem } from 'components/context/ArticleContext'
-import { RestCategoryOperationsT } from './types'
+import { useRestContext } from 'components/context/RestContext'
+import { Operation } from './types'
 import { RestOperation } from './RestOperation'
-import { MiniTocs } from 'components/ui/MiniTocs'
 
 const ClientSideHighlightJS = dynamic(() => import('components/article/ClientSideHighlightJS'), {
   ssr: false,
@@ -25,22 +21,12 @@ const ClientSideRedirectExceptions = dynamic(
 )
 
 export type StructuredContentT = {
-  descriptions: any
-  introContent: string
-  restOperations: RestCategoryOperationsT
-  miniTocItems?: MiniTocItem[]
+  restOperations: Operation[]
 }
 
-export const RestReferencePage = ({
-  descriptions,
-  introContent,
-  restOperations,
-  miniTocItems,
-}: StructuredContentT) => {
+export const RestReferencePage = ({ restOperations }: StructuredContentT) => {
   const { asPath } = useRouter()
-  const { page } = useMainContext()
-  const subcategories = Object.keys(restOperations)
-
+  const { title, intro, renderedPage } = useRestContext()
   // We have some one-off redirects for rest api docs
   // currently those are limited to the repos page, but
   // that will grow soon as we restructure the rest api docs.
@@ -57,16 +43,13 @@ export const RestReferencePage = ({
   // code.
   const [loadClientsideRedirectExceptions, setLoadClientsideRedirectExceptions] = useState(false)
   useEffect(() => {
-    const { hash, pathname } = window.location
+    const { hash } = window.location
+
     // Today, Jan 2022, it's known explicitly what the pathname.
     // In the future there might be more.
     // Hopefully, we can some day delete all of this and no longer
     // be dependent on the URL hash to do the redirect.
-    if (
-      hash &&
-      (pathname.endsWith('/rest/reference/repos') ||
-        pathname.endsWith('/rest/reference/enterprise-admin'))
-    ) {
+    if (hash && asPath.startsWith('/rest')) {
       setLoadClientsideRedirectExceptions(true)
     }
   }, [])
@@ -112,47 +95,24 @@ export const RestReferencePage = ({
       never render anything. It always just return null. */}
       {loadClientsideRedirectExceptions && <ClientSideRedirectExceptions />}
       {lazyLoadHighlightJS && <ClientSideHighlightJS />}
-
-      <div className="container-xl px-3 px-md-6 my-4">
-        <ArticleGridLayout
-          topper={<ArticleTitle>{page.title}</ArticleTitle>}
-          intro={
-            <>
-              {page.introPlainText && (
-                <Lead data-testid="lead" data-search="lead">
-                  {page.introPlainText}
-                </Lead>
-              )}
-            </>
-          }
-          toc={
-            <>
-              {miniTocItems && miniTocItems.length > 1 && (
-                <MiniTocs pageTitle={page.title} miniTocItems={miniTocItems} />
-              )}
-            </>
-          }
-        >
-          <div key={`restCategory-introContent`}>
-            <div dangerouslySetInnerHTML={{ __html: introContent }} />
-          </div>
-          <div id="article-contents">
-            <MarkdownContent>
-              {subcategories.map((subcategory, index) => (
-                <div key={`restCategory-${index}`}>
-                  <div dangerouslySetInnerHTML={{ __html: descriptions[subcategory] }} />
-                  {restOperations[subcategory].map((operation, index) => (
-                    <RestOperation
-                      key={`restOperation-${index}`}
-                      operation={operation}
-                      index={index}
-                    />
-                  ))}
-                </div>
-              ))}
-            </MarkdownContent>
-          </div>
-        </ArticleGridLayout>
+      <div className={'px-3 px-md-6 my-4 mx-xl-12 mx-lg-12'}>
+        <h1 className="mb-3">{title}</h1>
+        {intro && (
+          <Lead data-testid="lead" data-search="lead" className="markdown-body">
+            {intro}
+          </Lead>
+        )}
+        <MarkdownContent>
+          <MarkdownContent>{renderedPage}</MarkdownContent>
+          {restOperations &&
+            restOperations.length > 0 &&
+            restOperations.map((operation, index) => (
+              <RestOperation
+                key={`restOperation-${operation.title}-${index}`}
+                operation={operation}
+              />
+            ))}
+        </MarkdownContent>
       </div>
     </DefaultLayout>
   )

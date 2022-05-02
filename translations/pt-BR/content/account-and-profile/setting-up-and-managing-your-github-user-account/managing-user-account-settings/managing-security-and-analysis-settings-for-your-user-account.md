@@ -19,7 +19,7 @@ O {% data variables.product.prodname_dotcom %} pode ajudar a proteger seus repos
 
 Você ainda pode gerenciar os recursos de segurança e análise para repositórios individuais. Para obter mais informações, consulte "[Gerenciar configurações de segurança e análise do seu repositório](/github/administering-a-repository/managing-security-and-analysis-settings-for-your-repository)".
 
-Você também pode revisar o registro de segurança de todas as atividades na sua conta de usuário. Para obter mais informações, consulte "[Revisar o log de segurança](/authentication/keeping-your-account-and-data-secure/reviewing-your-security-log)."
+Você também pode rever o registro de segurança de todas as atividades da sua conta pessoal. Para obter mais informações, consulte "[Revisar o log de segurança](/authentication/keeping-your-account-and-data-secure/reviewing-your-security-log)."
 
 {% data reusables.security.some-security-and-analysis-features-are-enabled-by-default %}
 
@@ -50,5 +50,5 @@ Para obter uma visão geral da segurança do repositório, consulte "[Proteger s
 ## Leia mais
 
 - "[Sobre o gráfico de dependências](/github/visualizing-repository-data-with-graphs/about-the-dependency-graph)"
-- "[Gerenciar vulnerabilidades nas dependências do seu projeto](/github/managing-security-vulnerabilities/managing-vulnerabilities-in-your-projects-dependencies)"
+- "[Sobre {% data variables.product.prodname_dependabot_alerts %}](/code-security/supply-chain-security/about-alerts-for-vulnerable-dependencies)"
 - "[Manter suas dependências atualizadas automaticamente](/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically)"

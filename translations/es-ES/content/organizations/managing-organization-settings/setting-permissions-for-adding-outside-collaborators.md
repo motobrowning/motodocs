@@ -15,16 +15,17 @@ topics:
 shortTitle: Configurar la política de colaboradores
 ---
 
-By default, anyone with admin access to a repository can invite outside collaborators to work on the repository. You can choose to restrict the ability to invite outside collaborators to organization owners only.
-
+Predeterminadamente, cualquiera con acceso administrativo en un repositorio puede invitar a los colaboradores externos a trabajar en el repositorio. Puedes elegir restringir la capacidad de invitar colaboradores externos para que solo sean propietarios de la organización.
 
 {% ifversion ghec %}
 {% note %}
 
-**Note:** Only organizations that use {% data variables.product.prodname_ghe_cloud %} can restrict the ability to invite outside collaborators to organization owners. {% data reusables.enterprise.link-to-ghec-trial %}
+**Nota:** Solo las organizaciones que utilizan {% data variables.product.prodname_ghe_cloud %} pueden restringir la capacidad de invitar colaboradores externos para que solo sean los propietarios de organizaciones. {% data reusables.enterprise.link-to-ghec-trial %}
 
 {% endnote %}
 {% endif %}
+
+{% ifversion ghec %}Si tu organización el pertenece a una cuenta empresarial, no podrás{% else %}No podrás{% endif %}configurar este ajuste para ella en caso de que un propietario de empresa haya configurado una política a nivel empresarial. Para obtener más información, consulta la sección "[Requerir políticas de administración de repositorios en tu empresa]{% ifversion ghec %}(/admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#enforcing-a-policy-for-inviting-collaborators-to-repositories)"{% else %}(/admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#enforcing-a-policy-for-inviting-outside-collaborators-to-repositories){% endif %}".
 
 {% data reusables.organizations.outside-collaborators-use-seats %}
 

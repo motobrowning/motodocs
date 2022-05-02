@@ -1,6 +1,6 @@
 ---
 title: Níveis de permissão para um repositório de conta de usuário
-intro: 'Um repositório pertencente a uma conta de usuário tem dois níveis de permissão: o proprietário do repositório e colaboradores.'
+intro: 'Um repositório pertencente a uma conta pessoal tem dois níveis de permissão: o proprietário e os colaboradores do repositório.'
 redirect_from:
   - /articles/permission-levels-for-a-user-account-repository
   - /github/setting-up-and-managing-your-github-user-account/permission-levels-for-a-user-account-repository
@@ -15,19 +15,19 @@ topics:
 shortTitle: Repositórios de usuário de permissão
 ---
 
-## Sobre os níveis de permissões para um repositório de conta de usuário
+## Sobre níveis de permissão para o repositório de uma conta pessoal
 
-Repositórios pertencentes a contas de usuário têm um proprietário. As permissões de propriedade não podem ser compartilhadas com outra conta de usuário.
+Os repositórios pertencentes a contas pessoais têm um proprietário. As permissões de propriedade não podem ser compartilhadas com outra conta pessoal.
 
 Você também pode {% ifversion fpt or ghec %}convidar{% else %}add{% endif %} usuários em {% data variables.product.product_name %} para o seu repositório como colaboradores. Para obter mais informações, consulte "[Convidar colaboradores para um repositório pessoal](/github/setting-up-and-managing-your-github-user-account/inviting-collaborators-to-a-personal-repository)".
 
 {% tip %}
 
-**Dica:** Se você precisar de mais acesso granular a um repositório pertencente à sua conta de usuário, considere transferir o repositório para uma organização. Para obter mais informações, consulte "[Transferir um repositório](/github/administering-a-repository/transferring-a-repository#transferring-a-repository-owned-by-your-user-account)".
+**Dica:** Se você precisar de mais acesso granular a um repositório pertencente à sua conta pessoal, considere transferir o repositório para uma organização. Para obter mais informações, consulte "[Transferir um repositório](/github/administering-a-repository/transferring-a-repository#transferring-a-repository-owned-by-your-personal-account)".
 
 {% endtip %}
 
-## Acesso de proprietário para um repositório de propriedade de uma conta de usuário
+## Acesso do proprietário de um repositório pertencente a uma conta pessoal
 
 O proprietário do repositório tem controle total do repositório. Além das ações que qualquer colaborador pode executar, o proprietário do repositório pode executar as ações a seguir.
 
@@ -48,7 +48,7 @@ O proprietário do repositório tem controle total do repositório. Além das a�
 | Personalizar a visualização das mídias sociais do repositório                                                                                                    | "[Personalizar a visualização das mídias sociais do seu repositório](/github/administering-a-repository/customizing-your-repositorys-social-media-preview)"                                                                                                                                                      |
 | Criar um modelo a partir do repositório                                                                                                                          | "[Criando um repositório de modelo](/github/creating-cloning-and-archiving-repositories/creating-a-template-repository)"{% ifversion fpt or ghes or ghae-issue-4864 or ghec %}
 | Controle o acesso a {% data variables.product.prodname_dependabot_alerts %} para dependências vulneráveis                                                      | "[Gerenciar as configurações de segurança e análise do repositório](/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-security-and-analysis-settings-for-your-repository#granting-access-to-security-alerts)" |{% endif %}{% ifversion fpt or ghec %}
-| Ignorar {% data variables.product.prodname_dependabot_alerts %} no repositório                                                                                 | "[Visualizar e atualizar dependências vulneráveis no seu repositório](/github/managing-security-vulnerabilities/viewing-and-updating-vulnerable-dependencies-in-your-repository)"                                                                                                                                |
+| Ignorar {% data variables.product.prodname_dependabot_alerts %} no repositório                                                                                 | "[Visualizando {% data variables.product.prodname_dependabot_alerts %} para dependências vulneráveis](/github/managing-security-vulnerabilities/viewing-and-updating-vulnerable-dependencies-in-your-repository)"                                                                                              |
 | Gerenciar o uso de dados para um repositório privado                                                                                                             | "[Gerenciar as configurações de uso de dados para o seu repositório privado](/get-started/privacy-on-github/managing-data-use-settings-for-your-private-repository)"
 {% endif %}
 | Definir os proprietários do código do repositório                                                                                                                | "[Sobre proprietários do código](/github/creating-cloning-and-archiving-repositories/about-code-owners)"                                                                                                                                                                                                         |
@@ -58,13 +58,13 @@ O proprietário do repositório tem controle total do repositório. Além das a�
 {% endif %}
 | Permitir ou negar merge automático para pull requests                                                                                                            | "[Gerenciar merge automático para pull requests no seu repositório](/github/administering-a-repository/managing-auto-merge-for-pull-requests-in-your-repository)"                                                                                                                                                |
 
-## Acesso de colaborador para um repositório pertencente a uma conta de usuário
+## Acesso do colaborador a um repositório pertencente a uma conta pessoal
 
 Os colaboradores em um repositório pessoal podem extrair (ler) os conteúdos do repositório e fazer push (gravação) das alterações no repositório.
 
 {% note %}
 
-**Observação:** Em um repositório privado, proprietários de repositórios podem conceder somente acesso de gravação aos colaboradores. Os colaboradores não podem ter acesso somente leitura a repositórios pertencentes a uma conta de usuário.
+**Observação:** Em um repositório privado, proprietários de repositórios podem conceder somente acesso de gravação aos colaboradores. Os colaboradores não podem ter acesso somente-leitura a repositórios pertencentes a uma conta pessoal.
 
 {% endnote %}
 
